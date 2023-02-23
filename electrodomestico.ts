@@ -24,9 +24,9 @@ class Electrodomestico {
     // calculo si el producto es de bajo consumo o no
     if (this.balance > 3) {
       // si es mayor a 3 es de alta gama
-      console.log("tu " + this.nombre + "es de bajo consumo");
+      console.log(`tu ${this.nombre} es de bajo consumo`);
     } else {
-      console.log("tu " + this.nombre + "es de consumo elevado");
+      console.log(`tu ${this.nombre} es de consumo elevado`);
     }
   }
 }
