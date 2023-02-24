@@ -16,12 +16,8 @@ class Electrodomestico {
     return calculo;
   }
 
-  public balance(): void {
+  public balance(): number {
     let calcularBalance: number = this.precio / this.peso;
-    console.log(`el balance es ${calcularBalance}`);
-
-    if (calcularBalance > 3) {
-      console.log(`tu ${this.nombre} es de alta gama`);
-    } else console.log(`tu ${this.nombre} es de  gama baja`);
+    return calcularBalance;
   }
 }
