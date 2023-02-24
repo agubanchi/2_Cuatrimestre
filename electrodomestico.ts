@@ -3,30 +3,25 @@ class Electrodomestico {
   public precio: number = 5000;
   public color: string = "Gris";
   public consumo: number = 230;
-  public consumoEnergetico: boolean;
+  public consumoEnergetico: number;
   public peso: number = 150;
 
   public tipoConsumo(): boolean {
-    if (this.consumo < 300) {
-      this.consumoEnergetico = true; // si el consumo es menor a 300, es de bajo consumo
+    let calculo: boolean = false;
+    if (this.consumoEnergetico > 100) {
+      calculo = false;
     } else {
-      this.consumoEnergetico = false; // si es mayor a 100 no
+      calculo = true;
     }
-    return this.consumoEnergetico;
+    return calculo;
   }
 
-  public balance(): number {
-    // obtengo el balance
-    return this.precio / this.peso;
-  }
+  public balance(): void {
+    let calcularBalance: number = this.precio / this.peso;
+    console.log(`el balance es ${calcularBalance}`);
 
-  public gama(): void {
-    // calculo si el producto es de bajo consumo o no
-    if (this.balance > 3) {
-      // si es mayor a 3 es de alta gama
-      console.log(`tu ${this.nombre} es de bajo consumo`);
-    } else {
-      console.log(`tu ${this.nombre} es de consumo elevado`);
-    }
+    if (calcularBalance > 3) {
+      console.log(`tu ${this.nombre} es de alta gama`);
+    } else console.log(`tu ${this.nombre} es de  gama baja`);
   }
 }
