@@ -1,16 +1,35 @@
 class Televisor {
-  public estaPrendido: boolean = false;
-  public canalActual: number = 0;
-  public volumenActual: number = 0;
-  public marca: string = "";
-  public esSmartTv: boolean = false;
+  public estaPrendido: boolean;
+  public canalActual: number;
+  public volumenActual: number;
+  public marca: string;
+  public esSmartTv: boolean;
   public color: string;
+  public esBajoConsumo: boolean;
+
+  constructor(
+    paramEstaPrendido: boolean,
+    paramCanal: number,
+    paramVolumen: number,
+    paramMarca: string,
+    paramSmart: boolean,
+    paramColor: string
+  ) {
+    this.estaPrendido = paramEstaPrendido;
+    this.canalActual = paramCanal;
+    this.volumenActual = paramVolumen;
+    this.marca = paramMarca;
+    this.esSmartTv = paramSmart;
+    this.color = paramColor;
+  }
 
   public prenderApagar(): void {
-    if (this.estaPrendido === false) {
-      this.estaPrendido = true;
+    if (this.estaPrendido == false) {
+      //si se encuentra apagado
+      this.estaPrendido = true; //cambiala a true y prende el tele
     } else {
-      this.estaPrendido = false;
+      // si esta prendido
+      this.estaPrendido = false; //apagalo
     }
   }
 
@@ -18,19 +37,54 @@ class Televisor {
     return this.volumenActual;
   }
 
+  public subirCanal(): void {
+    if (this.canalActual <= 800) {
+      this.canalActual++;
+    }
+  }
+
   public subirVolumen(): void {
-    this.volumenActual = this.volumenActual + 1;
+    if (this.volumenActual <= 100) {
+      this.volumenActual++;
+    }
   }
 
-  bajarVolumen(): void {
-    this.volumenActual = this.volumenActual - 1;
+  public bajarVolumen(): void {
+    if (this.volumenActual >= 0) {
+      this.volumenActual--;
+    }
   }
 
-  subirCanal(): void {
-    this.canalActual = this.canalActual + 1;
+  public setEstaPrendido(paramPrendido: boolean): void {
+    this.estaPrendido = paramPrendido;
   }
-
-  bajarCanal(): void {
-    this.canalActual = this.canalActual - 1;
+  public getEstaPrendido(): boolean {
+    return this.estaPrendido;
   }
 }
+
+let televisor1: Televisor = new Televisor(false, 15, 50, "Sony", true, "Negro");
+
+let televisor2: Televisor = new Televisor(true, 20, 56, "LG", false, "Gris");
+
+let televisor3: Televisor = new Televisor(
+  false,
+  56,
+  78,
+  "Samsung",
+  true,
+  "Blanco"
+);
+
+//console.log(televisor1);
+//console.log(televisor2);
+
+televisor1.bajarVolumen();
+
+let volumenDelTelevisorSony: number = televisor2.conocerVolumenActual();
+console.log(volumenDelTelevisorSony);
+
+console.log(televisor2.marca);
+
+let prendido: boolean = televisor2.getEstaPrendido();
+console.log(prendido);
